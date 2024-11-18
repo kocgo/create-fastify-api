@@ -1,26 +1,35 @@
 {
-    "name": "create-fastify-api",
+    "name": "fastify-create",
     "version": "1.0.0",
     "description": "Create production-ready Fastify APIs with TypeScript, TypeBox, and Swagger",
     "main": "index.js",
-    "bin": "./bin/create-fastify-api.js",
+    "bin": {
+        "fastify-create": "./bin/fastify-create.js"
+    },
     "scripts": {
-        "test": "node --test tests/index.test.js"
+        "test": "node --test tests/index.test.js",
+        "prepublishOnly": "npm test",
+        "postpublish": "git push && git push --tags"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kocgo/create-fastify-api.git"
+        "url": "git+https://github.com/kocgo/fastify-create.git"
     },
     "author": "Gokhan KOC",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/kocgo/create-fastify-api/issues"
+        "url": "https://github.com/kocgo/fastify-create/issues"
     },
-    "homepage": "https://github.com/kocgo/create-fastify-api#readme",
+    "homepage": "https://github.com/kocgo/fastify-create#readme",
+    "files": [
+        "bin/",
+        "README.md"
+    ],
+    "engines": {
+        "node": ">=18"
+    },
     "dependencies": {
-        "chalk": "^4.1.0",
-        "download-git-repo": "^3.0.2",
-        "yargs": "^16.2.0"
+        "download-git-repo": "^3.0.2"
     },
     "keywords": [
         "fastify",

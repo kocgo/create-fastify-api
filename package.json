@@ -23,22 +23,21 @@
     "homepage": "https://github.com/kocgo/fastify-create#readme",
     "files": [
         "bin/",
+        "template/",
         "README.md"
     ],
     "engines": {
         "node": ">=18"
     },
-    "dependencies": {
-        "download-git-repo": "^3.0.2"
-    },
     "keywords": [
         "fastify",
-        "create",
         "typescript",
-        "typebox",
-        "swagger",
         "api",
-        "rest",
-        "template"
-    ]
+        "template",
+        "generator"
+    ],
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "fs-extra": "^11.1.1"
+    }
 }

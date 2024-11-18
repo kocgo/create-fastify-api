@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
 
@@ -11,7 +12,13 @@ if (!projectName) {
 }
 
 const projectPath = path.join(process.cwd(), projectName);
-const templatePath = path.join(__dirname, '..', 'template');
+const templatePath = path.resolve(__dirname, '..', 'template');
+
+// Debug log to see the resolved paths
+console.log('Debug - Template path:', templatePath);
+console.log('Debug - Project path:', projectPath);
+console.log('Debug - Template exists:', fs.existsSync(templatePath));
+console.log('Debug - Template contents:', fs.readdirSync(templatePath));
 
 if (fs.existsSync(projectPath)) {
     console.error(`Error: Directory ${projectName} already exists.`);
@@ -26,6 +33,7 @@ try {
 
     // Function to copy directory recursively
     function copyDir(src, dest) {
+        console.log('Debug - Copying from:', src, 'to:', dest);
         const entries = fs.readdirSync(src, { withFileTypes: true });
 
         for (const entry of entries) {
@@ -33,7 +41,8 @@ try {
             const destPath = path.join(dest, entry.name);
 
             // Skip node_modules and .git directories
-            if (srcPath.includes('node_modules') || srcPath.includes('.git')) {
+            if (entry.name === 'node_modules' || entry.name === '.git') {
+                console.log('Debug - Skipping:', entry.name);
                 continue;
             }
 
@@ -42,6 +51,7 @@ try {
                 copyDir(srcPath, destPath);
             } else {
                 fs.copyFileSync(srcPath, destPath);
+                console.log('Debug - Copied file:', entry.name);
             }
         }
     }
@@ -58,6 +68,7 @@ try {
     console.log('\nHappy coding! 🚀');
 } catch (err) {
     console.error('Error:', err.message);
+    console.error('Error stack:', err.stack);
     // Clean up if there's an error
     if (fs.existsSync(projectPath)) {
         fs.rmSync(projectPath, { recursive: true, force: true });

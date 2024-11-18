@@ -1,6 +1,6 @@
 {
     "name": "fastify-create",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Create production-ready Fastify APIs with TypeScript, TypeBox, and Swagger",
     "main": "index.js",
     "bin": {

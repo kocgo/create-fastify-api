@@ -10,6 +10,7 @@ A modern, type-safe API template using Fastify, TypeBox, and Swagger.
 - [Swagger UI](https://swagger.io/tools/swagger-ui/) - API documentation and testing interface
 - Request/Response validation out of the box
 - Built-in test setup using Node's test runner
+- Docker support for containerized deployment
 
 ## Getting Started
 
@@ -17,6 +18,7 @@ A modern, type-safe API template using Fastify, TypeBox, and Swagger.
 
 - Node.js 18+ (for test runner support)
 - npm or yarn
+- Docker (optional, for containerization)
 
 ### Installation
 
@@ -42,6 +44,18 @@ npm run generate-openapi
 ```
 
 The server will start at `http://localhost:3000`. Visit `http://localhost:3000/docs` for the Swagger UI.
+
+### Docker
+
+```bash
+# Build the Docker image
+docker build -t my-fastify-api .
+
+# Run the container
+docker run -p 3000:3000 my-fastify-api
+```
+
+The containerized application will be available at `http://localhost:3000`.
 
 ## Project Structure
 
